@@ -1,4 +1,4 @@
-script: ./gradlew clean build artifactoryPublish
+script: ./gradlew -q -s -PbuildInfo.build.number=$TRAVIS_BUILD_NUMBER -PbuildInfo.buildUrl=https://travis-ci.org/${TRAVIS_REPO_SLUG}/builds/${TRAVIS_JOB_ID} -PbuildInfo.buildAgent.name=$USER -PbuildInfo.principal=$USER build artifactoryPublish
 jdk:
   - openjdk7
 env:
