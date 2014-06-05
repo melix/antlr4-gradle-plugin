@@ -40,7 +40,8 @@ class Antlr4Plugin implements Plugin<Project> {
         // This allows the user to provide their own dependencies which might
         // include either more recent or developmental versions of ANTLR4.
         project.afterEvaluate {
-            if (project.getConfigurations().getByName('antlr4').getDependencies().isEmpty()) {
+            def antlr4config = project.getConfigurations().getByName('antlr4')
+            if (antlr4config.getDependencies().isEmpty()) {
                 project.dependencies {
                     antlr4 'org.antlr:antlr4:4.2.2'
                 }
