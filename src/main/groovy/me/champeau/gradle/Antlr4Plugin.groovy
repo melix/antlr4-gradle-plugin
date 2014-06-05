@@ -33,8 +33,24 @@ class Antlr4Plugin implements Plugin<Project> {
         project.configurations {
             antlr4
         }
-        project.dependencies {
-            antlr4 'org.antlr:antlr4:4.2.2'
+
+        // After the evaluation of all build.gradle scripts we check to see
+        // if the antlr4 configuration has any dependencies and if not,
+        // we add the current default "org.antlr:antlr4:4.2.2".
+        // This allows the user to provide their own dependencies which might
+        // include either more recent or developmental versions of ANTLR4.
+        project.afterEvaluate {
+            configurations {
+                antlr4 {
+                    dependencies {
+                        if (isEmpty()) {
+                            project.dependencies {
+                                antlr4 'org.antlr:antlr4:4.2.2'
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         project.task('antlr4', type:Antlr4Task)
