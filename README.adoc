@@ -24,7 +24,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'me.champeau.gradle:antlr4-gradle-plugin:0.1-SNAPSHOT'
+        classpath 'me.champeau.gradle:antlr4-gradle-plugin:0.1'
     }
 }
 
@@ -32,7 +32,7 @@ repositories {
    jcenter()
 }
 
-apply plugin: 'antlr4'
+apply plugin: 'me.champeau.gradle.antlr4'
 ----
 
 == Configuration

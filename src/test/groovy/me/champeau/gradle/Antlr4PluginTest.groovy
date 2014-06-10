@@ -8,7 +8,7 @@ class Antlr4PluginTest {
     @Test
     void pluginIsApplied() {
         Project project = ProjectBuilder.builder().build()
-        project.apply plugin: 'antlr4'
+        project.apply plugin: 'me.champeau.gradle.antlr4'
 
 
         def task = project.tasks.findByName('antlr4')
