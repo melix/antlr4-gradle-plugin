@@ -23,10 +23,17 @@ class Antlr4Plugin implements Plugin<Project> {
         project.configurations {
             antlr4
         }
+
+        project.extensions.create('antlr4Options', Antlr4PluginExtension)
+
         project.dependencies {
-            antlr4 'org.antlr:antlr4:4.2.2'
+            antlr4 group: 'org.antlr', name: 'antlr4', version: project.antlr4Options.antlr4Version
         }
 
         project.task('antlr4', type:Antlr4Task)
     }
+}
+
+class Antlr4PluginExtension {
+    def String antlr4Version = '4.2.2'
 }
