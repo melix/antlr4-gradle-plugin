@@ -18,25 +18,26 @@ package me.champeau.gradle
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
-/**
- * This plugin is responsible for making sure that the Javadocs you generate using Gradle are not
- * vulnerable to frame injection, as described in http://www.kb.cert.org/vuls/id/225657
- *
- * Applying this plugin will guarantee that all generated javadoc is fixed, as well as groovydoc,
- * independently of the JDK being used to compile the project.
- *
- * @author Julien Ponge
- * @author Cedric Champeau
- */
 class Antlr4Plugin implements Plugin<Project> {
     void apply(Project project) {
         project.configurations {
             antlr4
         }
-        project.dependencies {
-            antlr4 'org.antlr:antlr4:4.2.2'
+
+        project.extensions.create('antlr4Options', Antlr4PluginExtension)
+
+        project.with {
+            afterEvaluate {
+                dependencies {
+                    antlr4 group: 'org.antlr', name: 'antlr4', version: project.antlr4Options.antlr4Version
+                }
+            }
         }
 
         project.task('antlr4', type:Antlr4Task)
     }
+}
+
+class Antlr4PluginExtension {
+    def String antlr4Version = '4.2.2'
 }
