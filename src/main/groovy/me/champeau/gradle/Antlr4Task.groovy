@@ -41,10 +41,14 @@ class Antlr4Task extends JavaExec {
 
     @Input
     @Optional
+    String _package
+
+    @Input
+    @Optional
     List extraArgs
 
     Antlr4Task() {
-    	main = 'org.antlr.v4.Tool'
+    	setMain('org.antlr.v4.Tool')
         setClasspath(project.configurations.antlr4)
     }
 
@@ -59,6 +63,10 @@ class Antlr4Task extends JavaExec {
         def args = ['-o', output]
         args << (listener ? '-listener' : '-no-listener')
         args << (visitor ? '-visitor' : '-no-visitor')
+        if (_package) {
+            args << '-p'
+            args << _package
+        }
         if (extraArgs) {
             args.addAll(extraArgs)
         }
