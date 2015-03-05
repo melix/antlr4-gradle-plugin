@@ -64,7 +64,7 @@ class Antlr4Task extends JavaExec {
         args << (listener ? '-listener' : '-no-listener')
         args << (visitor ? '-visitor' : '-no-visitor')
         if (_package) {
-            args << '-p'
+            args << '-package'
             args << _package
         }
         if (extraArgs) {
