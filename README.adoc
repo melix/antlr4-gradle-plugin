@@ -5,6 +5,8 @@
 
 image:https://travis-ci.org/melix/antlr4-gradle-plugin.png?branch=master["Build Status", link="https://travis-ci.org/melix/antlr4-gradle-plugin"]
 
+**This plugin is unmaintained. Since its release official support for Antlr 4 has been added to Gradle. See https://docs.gradle.org/current/userguide/antlr_plugin.html#header **
+
 The antlr4-gradle-plugin provides an easy way to generate grammars with {antlr4-url}[Antlr4] using {gradle-url}[Gradle].
 
 == Installation
