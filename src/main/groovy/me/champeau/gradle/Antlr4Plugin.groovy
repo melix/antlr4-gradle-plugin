@@ -34,7 +34,7 @@ class Antlr4Plugin implements Plugin<Project> {
             antlr4
         }
         project.dependencies {
-            antlr4 'org.antlr:antlr4:4.2.2'
+            antlr4 'org.antlr:antlr4:4.3'
         }
 
         project.task('antlr4', type:Antlr4Task)
